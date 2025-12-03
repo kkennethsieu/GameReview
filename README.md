@@ -26,7 +26,8 @@ Node.js, Express, React, TailwindCSS, Docker, RabbitMQ, SQLite, Python, Flask
 
 ---
 
-## 📂 Microservice Repositories
+## 📂 Microservice Repositories & Ports
+
 | Service                  | Port  | Repo Link                                              | Description                                              |
 |---------------------------|-------|--------------------------------------------------------|----------------------------------------------------------|
 | User Service              | 3001  | [Repo](https://github.com/your-username/user-service) | Handles login, signup, and authentication               |
@@ -37,12 +38,16 @@ Node.js, Express, React, TailwindCSS, Docker, RabbitMQ, SQLite, Python, Flask
 | API Gateway               | 8000  | [Repo](https://github.com/your-username/api-gateway)   | Routes requests to the appropriate services             |
 | Frontend                  | 5173  | [Repo](https://github.com/your-username/frontend)      | React frontend (mock/demo mode for hosted version)      |
 
+---
 
 ## 💻 Run Full System Locally
 
-### 1. Clone all repositories into the same folder including:
-```markdown```
-  game-review-platform/
+### 1. Clone all repositories into the same folder
+
+Your folder structure should look like this:
+
+```
+game-review-platform/
   docker-compose.yml
   user-service/
   game-service/
@@ -51,8 +56,11 @@ Node.js, Express, React, TailwindCSS, Docker, RabbitMQ, SQLite, Python, Flask
   notification-service/
   api-gateway/
   frontend/
+```
 
-```bash```
+Clone the repositories:
+
+```
 git clone https://github.com/your-username/user-service
 git clone https://github.com/your-username/game-service
 git clone https://github.com/your-username/review-service
@@ -60,23 +68,37 @@ git clone https://github.com/your-username/likes-service
 git clone https://github.com/your-username/notification-service
 git clone https://github.com/your-username/api-gateway
 git clone https://github.com/your-username/frontend
+```
 
+---
+
+### 2. Start all services with Docker Compose
+
+```
 docker compose up --build
+```
 
-```bash```
-```markdown```
+- Frontend runs on `http://localhost:5173`  
+- Other services run on their respective ports listed in the table above  
 
-### 2. Start all services with Docker Compose:
-
-
-- Frontend runs on http://localhost:5173
-- Other services run on their respective ports (configured in Docker Compose)
-
+---
 
 ## 📌 Notes
 
-Hosted frontend uses mock/demo data for login, reviews, likes, and notifications.
+- Hosted frontend uses **mock/demo data** for login, reviews, likes, and notifications  
+- Full system requires **local Docker setup** to see real backend functionality  
+- Designed to demonstrate **microservice architecture, Docker orchestration, and full-stack development skills**  
 
-Full system requires local Docker setup to see real backend functionality.
+---
 
-Designed to demonstrate microservice architecture, Docker orchestration, and full-stack development skills.
+## 🎥 Demo Video
+
+(Optional) Include a short demo video showing:
+
+- Login flow  
+- Browsing games  
+- Posting a review  
+- Liking a review  
+- Receiving a notification  
+
+[Demo Video Link](#)
