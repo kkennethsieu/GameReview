@@ -30,13 +30,13 @@ Node.js, Express, React, TailwindCSS, Docker, RabbitMQ, SQLite, Python, Flask
 
 | Service                  | Port  | Repo Link                                              | Description                                              |
 |---------------------------|-------|--------------------------------------------------------|----------------------------------------------------------|
-| User Service              | 3001  | [Repo]([https://github.com/kkennethsieu/user-service](https://github.com/kkennethsieu/User-Service)) | Handles login, signup, and authentication               |
-| Game Catalog Service      | 3002  | [Repo]([https://github.com/kkennethsieu/game-service](https://github.com/kkennethsieu/Game-Catalog-Service)) | Provides the catalog of games                            |
-| Review Service            | 3003  | [Repo]([https://github.com/kkennethsieu/review-service](https://github.com/kkennethsieu/Game-Review-Service)) | Stores and retrieves game reviews                        |
-| Likes Service             | 3004  | [Repo]([https://github.com/kkennethsieu/likes-service](https://github.com/kkennethsieu/CS361-LikesReviewService)) | Tracks likes on reviews                                   |
-| Notification Service      | 3005  | [Repo]([https://github.com/kkennethsieu/notification-service](https://github.com/kkennethsieu/CS361-NotificationService)) | Sends notifications for review interactions             |
-| API Gateway               | 8000  | [Repo]([https://github.com/kkennethsieu/api-gateway](https://github.com/kkennethsieu/Game-GatewayAPI))   | Routes requests to the appropriate services             |
-| Frontend                  | 5173  | [Repo]([https://github.com/kkennethsieu/frontend](https://github.com/kkennethsieu/main_project_frontend))      | React frontend (mock/demo mode for hosted version)      |
+| User Service              | 3001  | [https://github.com/kkennethsieu/user-service]((https://github.com/kkennethsieu/User-Service)) | Handles login, signup, and authentication               |
+| Game Catalog Service      | 3002  | [https://github.com/kkennethsieu/game-service]((https://github.com/kkennethsieu/Game-Catalog-Service)) | Provides the catalog of games                            |
+| Review Service            | 3003  | [https://github.com/kkennethsieu/review-service]((https://github.com/kkennethsieu/Game-Review-Service)) | Stores and retrieves game reviews                        |
+| Likes Service             | 3004  | [https://github.com/kkennethsieu/likes-service]((https://github.com/kkennethsieu/CS361-LikesReviewService)) | Tracks likes on reviews                                   |
+| Notification Service      | 3005  | [https://github.com/kkennethsieu/notification-service]((https://github.com/kkennethsieu/CS361-NotificationService)) | Sends notifications for review interactions             |
+| API Gateway               | 8000  | [https://github.com/kkennethsieu/api-gateway]((https://github.com/kkennethsieu/Game-GatewayAPI))   | Routes requests to the appropriate services             |
+| Frontend                  | 5173  | [https://github.com/kkennethsieu/frontend]((https://github.com/kkennethsieu/main_project_frontend))      | React frontend (mock/demo mode for hosted version)      |
 
 ---
 
