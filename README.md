@@ -31,7 +31,7 @@ Node.js, Express, React, TailwindCSS, Docker, RabbitMQ, SQLite, Python, Flask
 | Service                  | Port  | Repo Link                                              | Description                                              |
 |---------------------------|-------|--------------------------------------------------------|----------------------------------------------------------|
 | User Service              | 3001  | [User Service Repo](https://github.com/kkennethsieu/user-service) | Handles login, signup, and authentication               |
-| Game Catalog Service      | 3002  | [Game Catalog Service Repo](https://github.com/kkennethsieu/Game-catalog-service) | Provides the catalog of games                            |
+| Game Catalog Service      | 3002  | [Game Catalog Service Repo](https://github.com/kkennethsieu/catalog-service) | Provides the catalog of games                            |
 | Review Service            | 3003  | [Review Service Repo](https://github.com/kkennethsieu/reviews-service) | Stores and retrieves game reviews                        |
 | Likes Service             | 3004  | [Likes Service Repo](https://github.com/kkennethsieu/likes-service) | Tracks likes on reviews                                   |
 | Notification Service      | 3005  | [Notification Service Repo](https://github.com/kkennethsieu/notification-service) | Sends notifications for review interactions             |
@@ -61,13 +61,13 @@ game-review-platform/
 Clone the repositories:
 
 ```
-git clone https://github.com/kkennethsieu/User-Service
-git clone https://github.com/kkennethsieu/Game-Catalog-Service
-git clone https://github.com/kkennethsieu/Game-Review-Service
-git clone https://github.com/kkennethsieu/CS361-LikesReviewService
-git clone https://github.com/kkennethsieu/CS361-NotificationService
-git clone https://github.com/kkennethsieu/Game-GatewayAPI
-git clone https://github.com/kkennethsieu/main_project_frontend
+git clone https://github.com/kkennethsieu/user-service
+git clone https://github.com/kkennethsieu/catalog-service
+git clone https://github.com/kkennethsieu/reviews-service
+git clone https://github.com/kkennethsieu/likes-service
+git clone https://github.com/kkennethsieu/notification-service
+git clone https://github.com/kkennethsieu/gateway-service
+git clone https://github.com/kkennethsieu/game-frontend
 ```
 
 ---
