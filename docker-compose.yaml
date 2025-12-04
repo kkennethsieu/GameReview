@@ -55,11 +55,6 @@ services:
       - reviews-service
       - likes-service
 
-  # frontend:
-  #   build: ./game-frontend
-  #   ports:
-  #     - "5173:5173"
-
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -68,3 +63,15 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+
+  frontend:
+    build: ./game-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_USER_API: http://localhost:3001
+      VITE_CATALOG_API: http://localhost:3002
+      VITE_REVIEW_API: http://localhost:3003
+      VITE_LIKE_API: http://localhost:3004
+      VITE_NOTIFY_API: http://localhost:3005
+      VITE_GATEWAY_API: http://localhost:8000
