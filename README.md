@@ -21,7 +21,7 @@ Node.js, Express, React, TailwindCSS, Docker, RabbitMQ, SQLite, Python, Flask
 
 ## 🌐 Live Demo
 
-- Hosted Frontend (Mock/Data Only): [Vercel Link](https://your-vercel-link.vercel.app)  
+- Hosted Frontend (Mock/Data Only): [Vercel Link](https://play-review.vercel.app/)
 - Note: Backend is not hosted. Full system requires local Docker setup.
 
 ---
