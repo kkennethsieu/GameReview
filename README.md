@@ -30,7 +30,7 @@ Node.js, Express, React, TailwindCSS, Docker, RabbitMQ, SQLite, Python, Flask
 
 | Service                  | Port  | Repo Link                                              | Description                                              |
 |---------------------------|-------|--------------------------------------------------------|----------------------------------------------------------|
-| User Service              | 3001  | [User Service Repo](https://github.com/kkennethsieu/user-service) | Handles login, signup, and authentication               |
+| User Service              | 3001  | [User Service Repo](https://github.com/kkennethsieu/user-service) | Handles login, signup, and authentication using JWT Tokens               |
 | Game Catalog Service      | 3002  | [Game Catalog Service Repo](https://github.com/kkennethsieu/catalog-service) | Provides the catalog of games                            |
 | Review Service            | 3003  | [Review Service Repo](https://github.com/kkennethsieu/reviews-service) | Stores and retrieves game reviews                        |
 | Likes Service             | 3004  | [Likes Service Repo](https://github.com/kkennethsieu/likes-service) | Tracks likes on reviews                                   |
