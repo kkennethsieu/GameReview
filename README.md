@@ -91,14 +91,9 @@ docker compose up --build
 
 ---
 
-## 🎥 Demo Video
-
-(Optional) Include a short demo video showing:
-
-- Login flow  
-- Browsing games  
-- Posting a review  
-- Liking a review  
-- Receiving a notification  
-
-[Demo Video Link](#)
+## 🎥 Screenshots
+![Home Page](./screenshots/homepage.png)
+![My Account](./screenshots/myAccount.png)
+![About Game](./screenshots/aboutGame.png)
+![Add Review](./screenshots/addReview.png)
+![Trending Games](./screenshots/trendingGames.png)
