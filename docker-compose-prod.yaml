@@ -5,8 +5,8 @@ services:
     ports:
       - "3001:3001"
     environment:
-      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:-dev-secret-123}
-      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-dev-refresh-456}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
 
   catalog-service:
     build: ./catalog-service
@@ -23,19 +23,19 @@ services:
     ports:
       - "3004:3004"
     environment:
-      LIKES_PORT: ${LIKES_PORT:-3004}
-      RABBITMQ_URL: ${RABBITMQ_URL:-amqp://rabbitmq:5672}
+      LIKES_PORT: ${LIKES_PORT}
+      RABBITMQ_URL: ${RABBITMQ_URL}
 
   notification-service:
     build: ./notification-service
     ports:
       - "3005:3005"
     environment:
-      NOTIFY_PORT: ${NOTIFY_PORT:-3005}
-      USER_SERVICE: ${USER_SERVICE:-http://user-service:3001}
-      GAME_SERVICE: ${GAME_SERVICE:-http://catalog-service:3002}
-      REVIEW_SERVICE: ${REVIEW_SERVICE:-http://reviews-service:3003}
-      RABBITMQ_URL: ${RABBITMQ_URL:-amqp://rabbitmq:5672}
+      NOTIFY_PORT: ${NOTIFY_PORT}
+      USER_SERVICE: ${USER_SERVICE}
+      GAME_SERVICE: ${GAME_SERVICE}
+      REVIEW_SERVICE: ${REVIEW_SERVICE}
+      RABBITMQ_URL: ${RABBITMQ_URL}
     depends_on:
       - rabbitmq
 
@@ -61,5 +61,5 @@ services:
       - "5672:5672"
       - "15672:15672"
     environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-guest}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-guest}
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
