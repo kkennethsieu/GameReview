@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672" # AMQP port
+      - "15672:15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-guest}
+    restart: unless-stopped
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "3001:3001"
+    environment:
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:-dev-secret-123}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-dev-refresh-456}
+    restart: unless-stopped
+
+  catalog-service:
+    build: ./catalog-service
+    ports:
+      - "3002:3002"
+    restart: unless-stopped
+
+  reviews-service:
+    build: ./reviews-service
+    ports:
+      - "3003:3003"
+    restart: unless-stopped
+
+  likes-service:
+    build: ./likes-service
+    ports:
+      - "3004:3004"
+    environment:
+      LIKES_PORT: ${LIKES_PORT:-3004}
+      RABBITMQ_URL: ${RABBITMQ_URL:-amqp://rabbitmq:5672}
+    restart: unless-stopped
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "3005:3005"
+    environment:
+      NOTIFY_PORT: ${NOTIFY_PORT:-3005}
+      USER_SERVICE_URL: ${USER_SERVICE_URL:-http://user-service:3001}
+      GAME_SERVICE_URL: ${GAME_SERVICE_URL:-http://catalog-service:3002}
+      REVIEW_SERVICE_URL: ${REVIEW_SERVICE_URL:-http://reviews-service:3003}
+      RABBITMQ_URL: ${RABBITMQ_URL:-amqp://rabbitmq:5672}
+    depends_on:
+      - rabbitmq
+    restart: unless-stopped
+
+  gateway-service:
+    build: ./gateway-service
+    ports:
+      - "8000:8000"
+    environment:
+      GATEWAY_PORT: ${GATEWAY_PORT:-8000}
+      USER_SERVICE_URL: ${USER_SERVICE_URL:-http://user-service:3001}
+      GAME_SERVICE_URL: ${GAME_SERVICE_URL:-http://catalog-service:3002}
+      REVIEW_SERVICE_URL: ${REVIEW_SERVICE_URL:-http://reviews-service:3003}
+      LIKES_SERVICE_URL: ${LIKES_SERVICE_URL:-http://likes-service:3004}
+      NOTIFICATION_SERVICE_URL: ${NOTIFICATION_SERVICE_URL:-http://notification-service:3005}
+    depends_on:
+      - user-service
+      - catalog-service
+      - reviews-service
+      - likes-service
+    restart: unless-stopped

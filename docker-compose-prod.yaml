@@ -1,65 +1,60 @@
 version: "3.9"
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    restart: always
+
   user-service:
-    build: ./user-service
-    ports:
-      - "3001:3001"
+    image: public.ecr.aws/x1y7v9f2/user-service:latest
     environment:
       ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
       REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
+    restart: always
 
   catalog-service:
-    build: ./catalog-service
-    ports:
-      - "3002:3002"
+    image: public.ecr.aws/x1y7v9f2/catalog-service:latest
+    restart: always
 
   reviews-service:
-    build: ./reviews-service
-    ports:
-      - "3003:3003"
+    image: public.ecr.aws/x1y7v9f2/reviews-service:latest
+    restart: always
 
   likes-service:
-    build: ./likes-service
-    ports:
-      - "3004:3004"
+    image: public.ecr.aws/x1y7v9f2/likes-service:latest
     environment:
       LIKES_PORT: ${LIKES_PORT}
       RABBITMQ_URL: ${RABBITMQ_URL}
+    restart: always
 
   notification-service:
-    build: ./notification-service
-    ports:
-      - "3005:3005"
+    image: public.ecr.aws/x1y7v9f2/notification-service:latest
     environment:
       NOTIFY_PORT: ${NOTIFY_PORT}
-      USER_SERVICE: ${USER_SERVICE}
-      GAME_SERVICE: ${GAME_SERVICE}
-      REVIEW_SERVICE: ${REVIEW_SERVICE}
+      USER_SERVICE_URL: ${USER_SERVICE_URL}
+      GAME_SERVICE_URL: ${GAME_SERVICE_URL}
+      REVIEW_SERVICE_URL: ${REVIEW_SERVICE_URL}
       RABBITMQ_URL: ${RABBITMQ_URL}
     depends_on:
       - rabbitmq
+    restart: always
 
   gateway-service:
-    build: ./gateway-service
+    image: public.ecr.aws/x1y7v9f2/gateway-service:latest
     ports:
-      - "8000:8000"
+      - "80:8000" # Public entry point
     environment:
       GATEWAY_PORT: ${GATEWAY_PORT}
-      USER_SERVICE: ${USER_SERVICE}
-      GAME_SERVICE: ${GAME_SERVICE}
-      REVIEW_SERVICE: ${REVIEW_SERVICE}
-      LIKES_SERVICE: ${LIKES_SERVICE}
+      USER_SERVICE_URL: ${USER_SERVICE_URL}
+      GAME_SERVICE_URL: ${GAME_SERVICE_URL}
+      REVIEW_SERVICE_URL: ${REVIEW_SERVICE_URL}
+      LIKES_SERVICE_URL: ${LIKES_SERVICE_URL}
+      NOTIFICATION_SERVICE_URL: ${NOTIFICATION_SERVICE_URL}
     depends_on:
       - user-service
       - catalog-service
       - reviews-service
       - likes-service
-
-  rabbitmq:
-    image: rabbitmq:3-management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    restart: always

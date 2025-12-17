@@ -1,0 +1,50 @@
+name: Master CD – Deploy to EC2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+
+            cd /home/ubuntu/microservices
+
+            # Runtime secrets
+            echo "ACCESS_TOKEN_SECRET=${{ secrets.ACCESS_TOKEN_SECRET }}" > .env
+            echo "REFRESH_TOKEN_SECRET=${{ secrets.REFRESH_TOKEN_SECRET }}" >> .env
+
+            echo "LIKES_PORT=${{ secrets.LIKES_PORT }}" >> .env
+            echo "NOTIFY_PORT=${{ secrets.NOTIFY_PORT }}" >> .env
+
+            echo "USER_SERVICE_URL=${{ secrets.USER_SERVICE_URL }}" >> .env
+            echo "GAME_SERVICE_URL=${{ secrets.GAME_SERVICE_URL }}" >> .env
+            echo "REVIEW_SERVICE_URL=${{ secrets.REVIEW_SERVICE_URL }}" >> .env
+            echo "LIKES_SERVICE_URL=${{ secrets.LIKES_SERVICE_URL }}" >> .env
+            echo "NOTIFICATION_SERVICE_URL=${{ secrets.NOTIFICATION_SERVICE_URL }}" >> .env
+
+            echo "RABBITMQ_URL=${{ secrets.RABBITMQ_URL }}" >> .env
+            echo "RABBITMQ_DEFAULT_USER=${{ secrets.RABBITMQ_DEFAULT_USER }}" >> .env
+            echo "RABBITMQ_DEFAULT_PASS=${{ secrets.RABBITMQ_DEFAULT_PASS }}" >> .env
+
+            echo "NODE_ENV=production" >> .env
+
+            # Pull latest images
+            docker compose pull
+
+            # Deploy
+            docker compose up -d --remove-orphans
+
+            docker ps
