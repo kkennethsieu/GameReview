@@ -30,7 +30,7 @@ jobs:
             echo "NOTIFY_PORT=${{ secrets.NOTIFY_PORT }}" >> .env
 
             echo "USER_SERVICE_URL=${{ secrets.USER_SERVICE_URL }}" >> .env
-            echo "GAME_SERVICE_URL=${{ secrets.GAME_SERVICE_URL }}" >> .env
+            echo "CATALOG_SERVICE_URL=${{ secrets.CATALOG_SERVICE_URL }}" >> .env
             echo "REVIEW_SERVICE_URL=${{ secrets.REVIEW_SERVICE_URL }}" >> .env
             echo "LIKES_SERVICE_URL=${{ secrets.LIKES_SERVICE_URL }}" >> .env
             echo "NOTIFICATION_SERVICE_URL=${{ secrets.NOTIFICATION_SERVICE_URL }}" >> .env
